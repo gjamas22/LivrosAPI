@@ -3,6 +3,7 @@ package com.gft.socialbooks.domain;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -44,7 +45,7 @@ public class Livro {
 	private String resumo;
 	
 	@JsonInclude(Include.NON_EMPTY)
-	@OneToMany(mappedBy = "livro")
+	@OneToMany(mappedBy = "livro" , cascade = CascadeType.ALL)
 	private List<Comentario> comentarios;
 	
 	@ManyToOne
