@@ -19,6 +19,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value = "Livro", description = "Representa um livro.")
 @Entity
 public class Livro {
 
@@ -27,18 +31,22 @@ public class Livro {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@ApiModelProperty(example = "Orgulho e preconceito")
 	@NotEmpty(message = "O campo nome não pode ser vazio.")
 	private String nome;
 	
+	@ApiModelProperty(example = "30/06/2020")
 	@JsonInclude(Include.NON_NULL)
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	@NotNull(message = "Campo publicação é de preenchimento obrigatório!" )
 	private Date publicacao;
 	
+	@ApiModelProperty(example = "Editora Abril")
 	@JsonInclude(Include.NON_NULL)
 	@NotNull(message = "Campo editora é de preenchimento obrigatório!" )
 	private String editora;
 	
+	@ApiModelProperty(example = "O livro é um romance renascentista, que trata a vida de Luci.")
 	@JsonInclude(Include.NON_NULL)
 	@NotNull(message = "Campo resumo é de preenchimento obrigatório!" )
 	@Size(max = 1500 , message = "O resumo não pode conter mais de 1500 caracteres.")
